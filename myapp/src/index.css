@@ -1,0 +1,18 @@
+@font-face {
+  font-family:'Gimnasio' ;
+  src: url(../../font/Galantis.otf);
+  
+}
+@font-face {
+  font-family:'Potente' ;
+  src: url(../../font/Aileron-Heavy.otf)
+}
+* {
+  font-family: "Gimnasio";
+}
+
+body {
+  margin: 0;
+
+}
+
