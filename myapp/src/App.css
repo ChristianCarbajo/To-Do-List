@@ -6,8 +6,15 @@
   padding: 10px;
 }
 .delete-btn {
-  float:right;
+  
   border-radius: 100%;
   background-color: red;
+  color: aliceblue;
+}
+.rewrite-btn{
+  height: 8vh;
+  width: 2vw; 
+  border-radius: 100%;
+  background-color: rgb(44, 233, 30);
   color: aliceblue;
 }

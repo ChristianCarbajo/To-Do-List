@@ -24,12 +24,20 @@ const addTask = (newTask) =>{
   let newItem = {id :todos.length, task: newTask, complete: false};
   setTodos([...todos, newItem]) 
 }
+const onRefreshTask = (editTask) =>{
+  const {id, task} = editTask;
+  const temp = [...todos]
+  const element = temp.find(item=> item.id === id)
+  element.task = task
+  setTodos(temp)
+}
+
 console.info(todos)
   return (
     <div className="container">
       <Header />
       <TodoForm addTask= {addTask}/>
-      <TodoList todos = {todos} onComplete = {onComplete} onDeleteItem = {onDeleteItem}/>
+      <TodoList todos = {todos} onComplete = {onComplete} onDeleteItem = {onDeleteItem} onRefreshTask = {onRefreshTask}/>
     </div>
   );
 }
