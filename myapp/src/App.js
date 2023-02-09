@@ -4,7 +4,7 @@ import data from './data.json'
 import TodoList from "./components/TodoList"
 import TodoForm from "./components/TodoForm"
 import Header from "./components/Header"
-
+import Footer from "./components/Footer"
 
 
 function App() {
@@ -37,7 +37,8 @@ console.info(todos)
     <div className="container">
       <Header />
       <TodoForm addTask= {addTask}/>
-      <TodoList todos = {todos} onComplete = {onComplete} onDeleteItem = {onDeleteItem} onRefreshTask = {onRefreshTask}/>
+      <TodoList todos = {todos} onComplete = {onComplete} onDeleteItem = {onDeleteItem} onRefreshTask = {onRefreshTask} addTask={addTask}/>
+      <Footer />
     </div>
   );
 }

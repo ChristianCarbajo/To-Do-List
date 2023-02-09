@@ -2,7 +2,7 @@ import React from 'react';
 import {useState} from "react"
 
 
- function TodoItem({todo, onComplete, onDeleteItem, onRefreshTask}) {
+ function TodoItem({todo, onComplete, onDeleteItem, onRefreshTask, addTask}) {
   
   
   
@@ -15,31 +15,32 @@ import {useState} from "react"
     
     function OnRewriteItem(){
       
-      const [value,setValue] = useState(todo.task)  
-      
-      const handleOnChange = (e) =>{
-        setValue (e.currentTarget.value);
-    }
+        const [value,setValue] = useState(todo.task)  
+        
+        const handleOnChange = (e) =>{
+          setValue (e.currentTarget.value);
+      }
 
-    const handleClick = (e) => {
-      
-           e.preventDefault();
-           onRefreshTask(
-           { id: todo.id,
-            task: value,
-            complete: false}
-           );
-          setRewrite(false)
-           }
+      const handleClick = (e) => {
+        
+            e.preventDefault();
+            onRefreshTask(
+            { id: todo.id,
+              task: value,
+              complete: false}
+            );
+            setRewrite(false)
+            }
 
-      return(
-      <>
-          <input type="text" value={value} onChange={handleOnChange}/>
-          {todo.task}
-          <button className='save' onClick={handleClick}>Save</button>
-          <button className='delete-btn' onClick={()=>onDeleteItem(todo.id)}>X</button>
-      </>
-      );
+        return(
+        <div className='onRewrite' style={getStyle()}>
+            <input type="text" value={value} onChange={handleOnChange}/> 
+            <div style={{display:"flex",alignItems: 'center',float:"right"}}>
+              <button style={{backgroundColor:"rgb(160, 219, 255)",cursor:"pointer", borderStyle: "none"}} className='save' onClick={handleClick}>💾</button>
+              <button className='delete-btn' onClick={()=>onDeleteItem(todo.id)}>×</button>
+            </div>
+        </div>
+        );
     }
 
 
@@ -48,14 +49,15 @@ import {useState} from "react"
     function OffRewriteItem(){
       return(
         <>
-        <div style = {getStyle()}>
+        <div className='puta' style = {getStyle()}>
         <input type='checkbox' checked = {todo.complete} onChange={()=>onComplete(todo.id)}/>
             
         {todo.task}
         
         <div style={{display:"flex",alignItems: 'center',float:"right"}}>
-          <button className='rewrite-btn' onClick={()=>setRewrite(true)}>R</button>
-          <button className='delete-btn' onClick={()=>onDeleteItem(todo.id)}>X</button>
+          
+          <button className='rewrite-btn' onClick={()=>setRewrite(true)}>✎</button>
+          <button className='delete-btn' onClick={()=>onDeleteItem(todo.id)}>×</button>
           
         </div>
     </div>
@@ -66,9 +68,11 @@ import {useState} from "react"
     const getStyle = () => {
         return {
             textDecoration: todo.complete ? 'line-through' : 'none',
-            margin: "20px",
-            border: "1px solid #ffffff",
-            backgroundColor:"#CCF7E3",        
+            margin:"2vh",
+            borderBottom:"solid",
+            borderWidth: "1px",
+
+                  
         }
     }
 
@@ -80,17 +84,7 @@ import {useState} from "react"
         {rewrite ? <OnRewriteItem /> : <OffRewriteItem />
         }
       </div>
-    // <div style = {getStyle()}>
-    //     <input type='checkbox' checked = {todo.complete} onChange={()=>onComplete(todo.id)}/>
-            
-    //     {todo.task}
-        
-    //     <div style={{display:"flex",alignItems: 'center',float:"right"}}>
-    //       <button className='rewrite-btn' onClick={()=>onRewriteItem(todo.id)}>R</button>
-    //       <button className='delete-btn' onClick={()=>onDeleteItem(todo.id)}>X</button>
-          
-    //     </div>
-    // </div>
+ 
   )
 }
  
