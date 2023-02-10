@@ -27,8 +27,7 @@ const addTask = (newTask) =>{
 const onRefreshTask = (editTask) =>{
   const {id, task} = editTask;
   const temp = [...todos]
-  const element = temp.find(item=> item.id === id)
-  element.task = task
+  temp.find(item=> item.id === id).task = task
   setTodos(temp)
 }
 

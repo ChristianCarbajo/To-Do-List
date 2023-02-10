@@ -49,7 +49,7 @@ import {useState} from "react"
     function OffRewriteItem(){
       return(
         <>
-        <div className='puta' style = {getStyle()}>
+        <div style = {getStyle()}>
         <input type='checkbox' checked = {todo.complete} onChange={()=>onComplete(todo.id)}/>
             
         {todo.task}

@@ -12,10 +12,9 @@ function TodoForm({addTask}) {
     }
     const handleSubmit = (e) => {
         if(userInput.length>0){
-             e.preventDefault();
+            e.preventDefault();
             addTask(userInput);
-            setUserInput("")
-            
+            setUserInput("") 
         }
         // e.target.setCustomValidity('Please tell us how we should address you.');
 console.info(e.target)
@@ -27,7 +26,6 @@ console.info(e.target)
             <input type = "text" value = {userInput} onChange = {handleOnChange} required/>
             <button style={{marginLeft:"0.5vh", cursor:"pointer", background:"rgb(217, 255, 156)"}}>Add</button>
         </form>
-    
     </div>
   )
 }
